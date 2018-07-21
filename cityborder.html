@@ -97,9 +97,24 @@
 
     $(document).ready(function () {
 
+
+
+
+
         $.getJSON('cityborder.geojson.json', function (resp) {
             geojson = resp;
             console.log("geojson loaded");
+
+            cityLayer = L.geoJSON(geojson, {
+                style: mapCityStyle
+            });
+
+            cityLayer.addTo(map);
+            map.fitBounds(cityLayer.getBounds());
+
+
+
+
 
             $('#dataset').DataTable({
                 //"searching": false,

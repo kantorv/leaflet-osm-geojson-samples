@@ -105,6 +105,15 @@
             geojson = resp;
             console.log("geojson loaded");
 
+            dataLayer = L.geoJSON(geojson, {
+                style: mapCityStyle
+            });
+
+            dataLayer.addTo(map);
+            map.fitBounds(dataLayer.getBounds());
+
+
+
             $('#dataset').DataTable({
                 //"searching": false,
                 "data": geojson.features,

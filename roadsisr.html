@@ -102,15 +102,7 @@
 
     $(document).ready(function () {
 
-        $.getJSON('roadsisr_all.geojson.json', function (resp) {
-           console.log("all roads  loaded");
-            roadLayer = L.geoJSON(resp, {
-                style: mapRoadStyle
-            });
 
-            roadLayer.addTo(map);
-            map.fitBounds(roadLayer.getBounds());
-        })
 
 
 
@@ -118,6 +110,14 @@
         $.getJSON('roads.geojson.json', function (resp) {
             geojson = resp;
             console.log("geojson loaded");
+
+            roadLayer = L.geoJSON(geojson, {
+                style: mapRoadStyle
+            });
+
+            roadLayer.addTo(map);
+            map.fitBounds(roadLayer.getBounds());
+
 
             $('#dataset').DataTable({
                 "searching": false,
